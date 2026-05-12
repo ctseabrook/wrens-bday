@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wren and the Missing Birthday Star</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="game">
+    <div id="stars"></div>
+    <div id="constellations"></div>
+    <div id="particles"></div>
+    <div id="shooting-star"></div>
+
+    <section id="title-screen" class="screen active">
+      <div class="image-stage">
+        <img id="title-background" src="images/title-background.png" alt="Astronaut Wren floating in space">
+        <img id="title-logo" src="images/title-logo.png" alt="Wren and the Missing Birthday Star">
+        <img id="ax-overlay" src="images/ax-overlay.png" alt="Ax the astronaut axolotl">
+      </div>
+
+      <div class="button-row title-buttons">
+        <button id="start-btn">Start Adventure</button>
+        <button id="wiggle-btn">Wiggle Ax</button>
+      </div>
+
+      <p id="wiggle-message"></p>
+    </section>
+
+    <section id="story-screen" class="screen">
+      <div class="story-layout">
+        <div class="scene-image-wrap">
+          <img id="scene-image" src="" alt="">
+        </div>
+
+        <div class="story-card">
+          <h1 id="scene-title"></h1>
+          <p id="scene-text"></p>
+          <div id="choices" class="button-column"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
