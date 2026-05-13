@@ -18,12 +18,27 @@ window.addEventListener("DOMContentLoaded", function () {
   const constellationsContainer = document.getElementById("constellations");
   const shootingStar = document.getElementById("shooting-star");
 
+  const sceneImageWrap = document.querySelector(".scene-image-wrap");
+
+  const wrenStoryOverlay = document.createElement("img");
+  wrenStoryOverlay.id = "wren-story-overlay";
+  wrenStoryOverlay.className = "scene-overlay";
+  wrenStoryOverlay.src = "images/wren-overlay.png";
+
+  const axStoryOverlay = document.createElement("img");
+  axStoryOverlay.id = "ax-story-overlay";
+  axStoryOverlay.className = "scene-overlay";
+  axStoryOverlay.src = "images/ax-overlay.png";
+
+  sceneImageWrap.appendChild(wrenStoryOverlay);
+  sceneImageWrap.appendChild(axStoryOverlay);
+
   const scenes = {
     bedroom: {
       title: "Wren’s Birthday Morning",
       image: "images/bedroom.png",
       text:
-        "It is May 12th — Wren’s birthday!\n\nEvery year, her special Birthday Star shines brighter than every other star in the sky.\n\nBut this year... it is gone.\n\nAx the axolotl wiggles nervously in his tiny bubble helmet.",
+        "Ever since Wren’s very first birthday, one star had always shined brighter than every other star in the sky on May 12th. Her mother called it Wren’s Birthday Star. Every year before bed, Wren would look through her telescope, find the glowing star, and make one special birthday wish. And somehow... the wishes always seemed to come true.\n\nThis year, Wren already knew exactly what she wanted to wish for.\n\nBut when she looked through her telescope that morning... the Birthday Star was gone.\n\n“Wait... WHAT?!” Wren gasped.\n\nBeside her floated Ax, Wren’s pet axolotl. Wren had won Ax from a claw machine at the Space Science Museum three years earlier, and Ax had worn a tiny astronaut helmet ever since.\n\n“Bloop?” Ax asked nervously.\n\nThen Wren noticed something strange drifting outside her window: Little tufts of fluffy white fur floating where the Birthday Star used to shine.\n\n“Uh oh,” said Wren. “I think somebody stole my star!”",
       choices: [
         { text: "Look through the telescope", next: "telescope" },
         { text: "Ask Ax what he thinks", next: "axButtons" }
@@ -34,7 +49,7 @@ window.addEventListener("DOMContentLoaded", function () {
       title: "The Telescope Clue",
       image: "images/telescope.png",
       text:
-        "Wren looks through her telescope and gasps.\n\nFar away near Pluto, something fluffy moves across the ice while holding a glowing star.\n\n“Polar bear!” Wren says.\n\nAx bonks the telescope with his tail.",
+        "Wren looked through her telescope and gasped.\n\nFar away on a cold, icy world, something fluffy moved across the ice while holding a glowing star.\n\n“Polar bear!” Wren said.\n\nAx bonked the telescope with his tail.\n\n“I have to get my star back before tonight,” Wren said. “Otherwise I won’t be able to make my birthday wish.”",
       choices: [
         { text: "Run to the rocket ship", next: "rocket" },
         { text: "Eat birthday pancakes first", next: "pancakes" }
@@ -43,34 +58,43 @@ window.addEventListener("DOMContentLoaded", function () {
 
     axButtons: {
       title: "The Sparkly Red Button",
-      image: "images/bedroom.png",
+      image: "images/sparkle-mode.png",
       text:
-        "Ax wiggles onto Wren’s control panel.\n\n“Bloop bloop!”\n\nWren knew that meant:\n\n“Definitely DO NOT press the sparkly red button.”\n\nShe pressed it anyway.\n\nThe room filled with confetti and disco music.",
+        "Ax wiggled onto Wren’s control panel.\n\n“Bloop bloop!”\n\nWren knew that meant: “Definitely DO NOT press the sparkly red button.”\n\nWren looked at the button.\n\nAx looked at the button.\n\nThe button sparkled.\n\nThat was not fair.",
       choices: [
-        { text: "Dance for a minute", next: "spaceDisco" },
-        { text: "Turn off disco mode and focus", next: "rocket" }
+        { text: "Press the sparkly red button", next: "spaceDisco" },
+        { text: "Back away slowly", next: "tooResponsible" }
       ]
     },
 
-    pancakes: {
-      title: "Silly Ending: Pancake Pile",
-      image: "images/bedroom.png",
+    tooResponsible: {
+      title: "Silly Ending: Too Much Self-Control",
+      image: "images/responsible.png",
       text:
-        "The pancakes are delicious.\n\nExtra syrupy. Extra fluffy.\n\nWren accidentally eats so many pancakes that she falls asleep in a pancake pile.\n\nAx uses pancake syrup to draw a tiny rocket ship on her forehead.",
+        "Wren backed away from the sparkly red button.\n\nVery responsible.\n\nVery mature.\n\nVery impressive.\n\nThen Ax pressed it.",
       choices: [
-        { text: "Continue Adventure", next: "rocket" },
-        { text: "Back to Title", next: "title" }
+        { text: "Oh no, Ax!", next: "spaceDisco" }
       ]
     },
 
     spaceDisco: {
       title: "Silly Ending: Space Disco",
-      image: "images/rocket.png",
+      image: "images/space-disco.png",
+      special: "discoDance",
       text:
-        "The rocket accidentally launches in DANCE MODE.\n\nA disco ball drops from the ceiling.\n\nAx spins through zero gravity wearing sunglasses.\n\nNobody knows where the sunglasses came from.",
+        "The room filled with confetti and disco music.\n\nWren and Ax danced ALL DAY LONG.\n\nThey danced through lunch. They danced through dinner. They even danced through bedtime.\n\nAs everyone knows, once Wren and Ax start a space disco party... it is almost impossible to stop.\n\nWren may have missed her birthday wish...\n\nbut the party was AMAZING.\n\nTHE END.",
       choices: [
-        { text: "Continue Adventure", next: "rocket" },
-        { text: "Back to Title", next: "title" }
+        { text: "Play Again", next: "title" }
+      ]
+    },
+
+    pancakes: {
+      title: "Silly Ending: Pancake Pile",
+      image: "images/pancakes.png",
+      text:
+        "The pancakes were delicious.\n\nExtra syrupy. Extra fluffy.\n\nWren accidentally ate so many pancakes that she fell asleep in a pancake pile.\n\nAx used pancake syrup to draw a tiny rocket ship on her forehead.\n\nWren may have missed her birthday wish... but the pancakes were AMAZING.\n\nTHE END.",
+      choices: [
+        { text: "Play Again", next: "title" }
       ]
     },
 
@@ -78,9 +102,9 @@ window.addEventListener("DOMContentLoaded", function () {
       title: "The Star Hopper Rocket",
       image: "images/rocket.png",
       text:
-        "Wren and Ax blast into space inside the Star Hopper rocket.\n\nPink and teal flames sparkle behind them.\n\nHalfway to Pluto, the navigation computer starts blinking.",
+        "Wren and Ax blasted into space inside the Star Hopper rocket.\n\nStars streaked past the windows as the cold planet slowly grew larger in the distance. Ax pressed his face against the glass and made an excited squeaking sound.\n\n“I hope we get there in time,” Wren said. “I’ve been waiting all year for my birthday wish.”\n\nHalfway there, the navigation computer started blinking.",
       choices: [
-        { text: "Follow the glitter trail", next: "moon" },
+        { text: "Follow the stardust trail", next: "moon" },
         { text: "Take the asteroid shortcut", next: "asteroids" }
       ]
     },
@@ -89,7 +113,7 @@ window.addEventListener("DOMContentLoaded", function () {
       title: "Moon Bunny Station",
       image: "images/moon.png",
       text:
-        "Wren lands beside a tiny moon café run by moon bunnies.\n\nOne bunny whispers, “A fluffy visitor took a glowing star toward Pluto.”\n\nAnother bunny gives Ax a carrot-shaped space cookie.",
+        "Wren followed the sparkling stardust trail deeper into space.\n\nBut halfway to Pluto, the rocket suddenly made a loud BEEEEEEP!\n\n“Uh oh,” said Wren.\n\nThe fuel gauge was almost empty. Luckily, a tiny glowing station floated nearby on the moon.\n\nInside was a cozy little café run entirely by moon bunnies.\n\nOne bunny whispered, “A fluffy visitor carrying a glowing star stopped here earlier.”\n\nAnother bunny gave Ax a carrot-shaped space cookie. Ax happily munched while Wren stared out the café window, trying not to think about losing her birthday wish.",
       choices: [
         { text: "Ask for directions to Pluto", next: "pluto" },
         { text: "Play zero-gravity hopscotch", next: "hopscotch" }
@@ -98,12 +122,11 @@ window.addEventListener("DOMContentLoaded", function () {
 
     hopscotch: {
       title: "Silly Ending: Ten Out of Ten Boings",
-      image: "images/moon.png",
+      image: "images/hopscotch.png",
       text:
-        "Wren jumps too hard during moon hopscotch.\n\nShe bounces ALL THE WAY around the moon.\n\nThree times.\n\nAx gives her a scorecard:\n\n10/10 BOINGS",
+        "Wren jumped too hard during moon hopscotch.\n\nShe bounced ALL THE WAY around the moon.\n\nThree times.\n\nAx gave her a scorecard: 10/10 BOINGS.\n\nWren may have missed her birthday wish... but she probably set a new moon record.\n\nTHE END.",
       choices: [
-        { text: "Continue to Pluto", next: "pluto" },
-        { text: "Back to Title", next: "title" }
+        { text: "Play Again", next: "title" }
       ]
     },
 
@@ -111,21 +134,20 @@ window.addEventListener("DOMContentLoaded", function () {
       title: "The Glitter Asteroid Belt",
       image: "images/asteroid-belt.png",
       text:
-        "The asteroid belt is full of glowing glitter rocks and floating space cupcakes.\n\nAx tries to eat a meteor.\n\n“AX, NO!”\n\nToo late.\n\nThe meteor tastes like blueberry socks.",
+        "The asteroid belt was full of glowing glitter rocks and floating space cupcakes.\n\nAx tried to eat a meteor.\n\n“AX, NO!”\n\nToo late. The meteor tasted like blueberry socks.\n\nWren checked the star map. “We can’t get too distracted. My birthday wish is waiting.”",
       choices: [
-        { text: "Follow the pawprints", next: "pluto" },
+        { text: "Follow the trail of white fur", next: "pluto" },
         { text: "Collect glitter cupcakes", next: "cupcakes" }
       ]
     },
 
     cupcakes: {
       title: "Silly Ending: Cupcake Overload",
-      image: "images/asteroid-belt.png",
+      image: "images/cupcakes.png",
       text:
-        "Wren collects SO MANY glitter cupcakes that the rocket becomes too heavy.\n\nThe rocket computer announces:\n\nWARNING: THIS SHIP IS NOW 87% CUPCAKE.",
+        "Wren collected SO MANY glitter cupcakes that the rocket became too heavy.\n\nThe rocket computer announced: WARNING: THIS SHIP IS NOW 87% CUPCAKE.\n\nWren may have missed her birthday wish... but she discovered the most delicious traffic jam in space.\n\nTHE END.",
       choices: [
-        { text: "Eat some cupcakes and continue", next: "pluto" },
-        { text: "Back to Title", next: "title" }
+        { text: "Play Again", next: "title" }
       ]
     },
 
@@ -133,7 +155,7 @@ window.addEventListener("DOMContentLoaded", function () {
       title: "The Pluto Ice Cave",
       image: "images/pluto-cave.png",
       text:
-        "Wren finally reaches Pluto.\n\nInside a glowing ice cave, a giant fluffy polar bear cuddles the Birthday Star like a teddy bear.\n\nThe cave glows warm pink and teal.\n\nThe polar bear looks surprised.\n\n“Oh,” he says softly. “Is this YOUR star?”",
+        "Wren finally reached Pluto.\n\nInside a glowing ice cave, a giant fluffy polar bear cuddled the Birthday Star like a teddy bear. The cave glowed with cozy light.\n\nThe polar bear looked surprised.\n\n“Oh,” he said softly. “Is this YOUR star?”\n\nWren stared at the Birthday Star. She had finally found it. Her special wish was so close.",
       choices: [
         { text: "Say, “You stole it!”", next: "grumpy" },
         { text: "Ask, “Why did you take it?”", next: "kind" }
@@ -142,23 +164,11 @@ window.addEventListener("DOMContentLoaded", function () {
 
     grumpy: {
       title: "A Grumpy Moment",
-      image: "images/pluto-cave.png",
+      image: "images/grumpy.png",
       text:
-        "The polar bear looks sad.\n\n“I’m sorry,” he says. “Pluto gets lonely and dark sometimes.”\n\nAx gently bonks Wren with his tail.\n\nWren realizes maybe yelling was not the best first choice.",
+        "Wren crossed her arms.\n\n“I am going to stay grumpy,” she said.\n\nShe tried very hard.\n\nBut Ax was floating beside her making his tiny worried face.\n\nAnd it was still her birthday.\n\nAnd the polar bear looked very sorry.\n\nBeing grumpy was starting to feel like a lot of work.\n\nWren took a big breath.\n\n“Okay,” she said. “Why did you take my star?”",
       choices: [
-        { text: "Apologize and listen", next: "kind" },
-        { text: "Stay grumpy", next: "tooGrumpy" }
-      ]
-    },
-
-    tooGrumpy: {
-      title: "Silly Ending: Dramatic Pouting",
-      image: "images/pluto-cave.png",
-      text:
-        "Wren crosses her arms dramatically.\n\nThe polar bear crosses HIS arms dramatically.\n\nAx sighs dramatically.\n\nEveryone sits in awkward silence for twenty whole minutes.\n\nNobody solves anything, but everyone gets REALLY good at dramatic pouting.",
-      choices: [
-        { text: "Be kind instead", next: "kind" },
-        { text: "Back to Title", next: "title" }
+        { text: "Ask why he took it", next: "kind" }
       ]
     },
 
@@ -166,18 +176,18 @@ window.addEventListener("DOMContentLoaded", function () {
       title: "Sharing the Birthday Star",
       image: "images/ending.png",
       text:
-        "The polar bear explains that Pluto is cold and lonely.\n\n“The star made my cave feel warm and happy,” he says.\n\nWren thinks carefully. Then she smiles.\n\n“We can share it.”\n\nNow every May 12th, the Birthday Star shines brightly for Wren.\n\nAnd every night, it sends cozy sparkles all the way to Pluto.\n\nAx squeaks happily.\n\nTHE END.",
+        "The polar bear carefully hugged the glowing star.\n\n“I’m sorry,” he said softly. “Pluto gets cold and lonely at night. The star made my cave feel warm and happy.”\n\nWren looked at the shining Birthday Star. She had waited ALL YEAR to make her special birthday wish. There were so many things she wanted to wish for.\n\nAx gently held her hand.\n\nWren looked around the cold little cave. Then she smiled.\n\n“I think everybody deserves a special wish,” she said.\n\nWren closed her eyes and made her birthday wish anyway.\n\n“I wish the Birthday Star could shine for BOTH of us.”\n\nThe star suddenly glowed brighter than ever before. Warm golden light filled the cave. The polar bear’s eyes sparkled.\n\nFrom that day on, every May 12th, the Birthday Star shined brightly for Wren... and every night, it sent cozy starlight all the way to Pluto.\n\nAx squeaked happily.\n\nTHE END.",
       choices: [
-        { text: "Play Again", next: "title" },
-        { text: "Wiggle Ax in Celebration", next: "celebrate" }
+        { text: "Birthday Sparkle Mode", next: "celebrate" }
       ]
     },
 
     celebrate: {
       title: "Birthday Sparkle Mode",
-      image: "images/ending.png",
+      image: "images/celebrate.png",
+      special: "axCelebration",
       text:
-        "Wren, Ax, and the Pluto polar bear float together under the shared Birthday Star.\n\nAx does the biggest birthday wiggle in the whole galaxy.\n\nHappy Birthday, Wren!",
+        "Ax floated happily beneath the glowing Birthday Star.\n\n“BLOOP BLOOP!”\n\nNobody knew exactly what Ax was saying...\n\nbut it was probably:\n\n“Happy Birthday, Wren!”",
       choices: [
         { text: "Play Again", next: "title" }
       ]
@@ -204,7 +214,36 @@ window.addEventListener("DOMContentLoaded", function () {
     }, 2200);
   }
 
+  function clearSpecialScene() {
+    wrenStoryOverlay.className = "scene-overlay";
+    axStoryOverlay.className = "scene-overlay";
+
+    document.querySelectorAll(".disco-light").forEach(function (light) {
+      light.remove();
+    });
+  }
+
+  function activateSpecialScene(special) {
+    clearSpecialScene();
+
+    if (special === "discoDance") {
+      wrenStoryOverlay.classList.add("dance");
+      axStoryOverlay.classList.add("dance");
+
+      ["one", "two", "three"].forEach(function (name) {
+        const light = document.createElement("div");
+        light.className = "disco-light " + name;
+        sceneImageWrap.appendChild(light);
+      });
+    }
+
+    if (special === "axCelebration") {
+      axStoryOverlay.classList.add("celebrate");
+    }
+  }
+
   function showTitle() {
+    clearSpecialScene();
     storyScreen.classList.remove("active");
     titleScreen.classList.add("active");
   }
@@ -223,71 +262,51 @@ window.addEventListener("DOMContentLoaded", function () {
     sceneTitle.textContent = scene.title;
     sceneText.textContent = scene.text;
     sceneImage.src = scene.image;
-    sceneImage.alt = scene.title;
+
+    activateSpecialScene(scene.special);
+
+    storyScreen.scrollTop = 0;
 
     choicesBox.innerHTML = "";
 
     scene.choices.forEach(function (choice) {
       const button = document.createElement("button");
       button.textContent = choice.text;
+
       button.onclick = function () {
         showScene(choice.next);
       };
+
       choicesBox.appendChild(button);
     });
   }
 
   function createStars() {
-    const safeSkyZones = [
-      { leftMin: 4, leftMax: 36, topMin: 5, topMax: 46 },
-      { leftMin: 60, leftMax: 96, topMin: 5, topMax: 42 },
-      { leftMin: 5, leftMax: 95, topMin: 5, topMax: 18 }
-    ];
-
     for (let i = 0; i < 60; i++) {
-      const zone = safeSkyZones[Math.floor(Math.random() * safeSkyZones.length)];
       const star = document.createElement("div");
 
       star.className = "star";
-      star.style.left = randomBetween(zone.leftMin, zone.leftMax) + "%";
-      star.style.top = randomBetween(zone.topMin, zone.topMax) + "%";
+      star.style.left = Math.random() * 100 + "%";
+      star.style.top = Math.random() * 100 + "%";
       star.style.animationDelay = Math.random() * 3 + "s";
-      star.style.animationDuration = 1.8 + Math.random() * 2.8 + "s";
 
       starsContainer.appendChild(star);
     }
   }
 
   function createConstellations() {
-    const constellations = [
-      [
-        { left: 14, top: 18 },
-        { left: 18, top: 19 },
-        { left: 22, top: 20 }
-      ],
-      [
-        { left: 72, top: 14 },
-        { left: 76, top: 13 },
-        { left: 80, top: 15 },
-        { left: 84, top: 12 }
-      ],
-      [
-        { left: 10, top: 34 },
-        { left: 14, top: 31 },
-        { left: 18, top: 34 },
-        { left: 14, top: 38 }
-      ]
+    const points = [
+      [14, 18], [18, 19], [22, 20],
+      [72, 14], [76, 13], [80, 15],
+      [10, 34], [14, 31], [18, 34]
     ];
 
-    constellations.forEach(function (group) {
-      group.forEach(function (point, index) {
-        const star = document.createElement("div");
-        star.className = "constellation-star";
-        star.style.left = point.left + "%";
-        star.style.top = point.top + "%";
-        star.style.animationDelay = index * 0.35 + "s";
-        constellationsContainer.appendChild(star);
-      });
+    points.forEach(function (point) {
+      const star = document.createElement("div");
+      star.className = "constellation-star";
+      star.style.left = point[0] + "%";
+      star.style.top = point[1] + "%";
+      constellationsContainer.appendChild(star);
     });
   }
 
@@ -296,44 +315,59 @@ window.addEventListener("DOMContentLoaded", function () {
       const particle = document.createElement("div");
 
       particle.className = "particle";
-      particle.style.left = randomBetween(5, 95) + "%";
-      particle.style.top = randomBetween(8, 88) + "%";
-      particle.style.animationDelay = Math.random() * 6 + "s";
-      particle.style.animationDuration = 4 + Math.random() * 4 + "s";
-
-      if (Math.random() > 0.5) {
-        particle.style.background = "rgba(23, 214, 209, 0.7)";
-        particle.style.boxShadow = "0 0 14px rgba(23, 214, 209, 0.75)";
-      }
+      particle.style.left = Math.random() * 100 + "%";
+      particle.style.top = Math.random() * 100 + "%";
 
       particlesContainer.appendChild(particle);
     }
   }
 
   function triggerShootingStar() {
-    const fromLeft = Math.random() > 0.25;
-    const startTop = randomBetween(8, 38);
-    const slightAngle = randomBetween(-8, 10);
+    const direction = Math.random() > 0.5 ? "leftToRight" : "rightToLeft";
+    const startTop = 8 + Math.random() * 26;
+    const slightAngle = -4 + Math.random() * 8;
+    const travelDistance = window.innerWidth + 360;
 
     shootingStar.style.top = startTop + "%";
-    shootingStar.style.left = fromLeft ? "-170px" : "110vw";
-    shootingStar.style.transform = fromLeft
-      ? "rotate(" + slightAngle + "deg)"
-      : "rotate(" + (180 + slightAngle) + "deg)";
 
-    shootingStar.classList.remove("active");
-    void shootingStar.offsetWidth;
-    shootingStar.classList.add("active");
+    if (direction === "leftToRight") {
+      shootingStar.style.left = "-220px";
+      shootingStar.style.background =
+        "linear-gradient(90deg, transparent, rgba(255, 241, 166, 0.25), rgba(255, 241, 166, 1))";
+    } else {
+      shootingStar.style.left = "110vw";
+      shootingStar.style.background =
+        "linear-gradient(90deg, rgba(255, 241, 166, 1), rgba(255, 241, 166, 0.25), transparent)";
+    }
 
-    setTimeout(triggerShootingStar, 4000 + Math.random() * 7000);
-  }
+    const endX = direction === "leftToRight"
+      ? travelDistance
+      : -travelDistance;
 
-  function randomBetween(min, max) {
-    return min + Math.random() * (max - min);
+    shootingStar.getAnimations().forEach(function (animation) {
+      animation.cancel();
+    });
+
+    shootingStar.animate(
+      [
+        { transform: "translateX(0px) rotate(" + slightAngle + "deg)", opacity: 0 },
+        { transform: "translateX(" + endX * 0.08 + "px) rotate(" + slightAngle + "deg)", opacity: 1 },
+        { transform: "translateX(" + endX * 0.92 + "px) rotate(" + slightAngle + "deg)", opacity: 1 },
+        { transform: "translateX(" + endX + "px) rotate(" + slightAngle + "deg)", opacity: 0 }
+      ],
+      {
+        duration: 9500,
+        easing: "linear",
+        fill: "forwards"
+      }
+    );
+
+    setTimeout(triggerShootingStar, 4500 + Math.random() * 6500);
   }
 
   createStars();
   createConstellations();
   createParticles();
+
   setTimeout(triggerShootingStar, 1800);
 });
