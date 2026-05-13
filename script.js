@@ -68,7 +68,7 @@ window.addEventListener("DOMContentLoaded", function () {
     },
 
     tooResponsible: {
-      title: "Silly Ending: Too Much Self-Control",
+      title: "Too Much Self-Control",
       image: "images/responsible.png",
       text:
         "Wren backed away from the sparkly red button.\n\nVery responsible.\n\nVery mature.\n\nVery impressive.\n\nThen Ax pressed it.",
@@ -78,7 +78,7 @@ window.addEventListener("DOMContentLoaded", function () {
     },
 
     spaceDisco: {
-      title: "Silly Ending: Space Disco",
+      title: "Space Disco",
       image: "images/space-disco.png",
       special: "discoDance",
       text:
@@ -89,7 +89,7 @@ window.addEventListener("DOMContentLoaded", function () {
     },
 
     pancakes: {
-      title: "Silly Ending: Pancake Pile",
+      title: "Pancake Pile",
       image: "images/pancakes.png",
       text:
         "The pancakes were delicious.\n\nExtra syrupy. Extra fluffy.\n\nWren accidentally ate so many pancakes that she fell asleep in a pancake pile.\n\nAx used pancake syrup to draw a tiny rocket ship on her forehead.\n\nWren may have missed her birthday wish... but the pancakes were AMAZING.\n\nTHE END.",
@@ -102,7 +102,7 @@ window.addEventListener("DOMContentLoaded", function () {
       title: "The Star Hopper Rocket",
       image: "images/rocket.png",
       text:
-        "Wren and Ax blasted into space inside the Star Hopper rocket.\n\nStars streaked past the windows as the cold planet slowly grew larger in the distance. Ax pressed his face against the glass and made an excited squeaking sound.\n\n“I hope we get there in time,” Wren said. “I’ve been waiting all year for my birthday wish.”\n\nHalfway there, the navigation computer started blinking.",
+        "Wren and Ax blasted into space inside the Star Hopper rocket.\n\nStars streaked past the windows as the cold planet slowly grew larger in the distance. Ax pressed his face against the glass and made an excited squeaking sound.\n\n“I hope we get there in time,” Wren said. “I’ve been waiting all year for my birthday wish.”\n\nAx pressed his face against the window and pointed excitedly toward the distant stars.",
       choices: [
         { text: "Follow the stardust trail", next: "moon" },
         { text: "Take the asteroid shortcut", next: "asteroids" }
@@ -121,7 +121,7 @@ window.addEventListener("DOMContentLoaded", function () {
     },
 
     hopscotch: {
-      title: "Silly Ending: Ten Out of Ten Boings",
+      title: "Ten Out of Ten Boings",
       image: "images/hopscotch.png",
       text:
         "Wren jumped too hard during moon hopscotch.\n\nShe bounced ALL THE WAY around the moon.\n\nThree times.\n\nAx gave her a scorecard: 10/10 BOINGS.\n\nWren may have missed her birthday wish... but she probably set a new moon record.\n\nTHE END.",
@@ -142,7 +142,7 @@ window.addEventListener("DOMContentLoaded", function () {
     },
 
     cupcakes: {
-      title: "Silly Ending: Cupcake Overload",
+      title: "Cupcake Overload",
       image: "images/cupcakes.png",
       text:
         "Wren collected SO MANY glitter cupcakes that the rocket became too heavy.\n\nThe rocket computer announced: WARNING: THIS SHIP IS NOW 87% CUPCAKE.\n\nWren may have missed her birthday wish... but she discovered the most delicious traffic jam in space.\n\nTHE END.",
